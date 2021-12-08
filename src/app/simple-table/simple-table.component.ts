@@ -1,20 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
 import {
   TableRow,
   TableField,
   PrintConfig,
   TableSetting,
   TablePagination,
-  DynamicMatTableComponent,
-  TableVirtualScrollDataSource,
   TablePaginationMode,
 } from 'dynamic-mat-table';
 import { BehaviorSubject } from 'rxjs';
-import { 
+import {
   tableColumnsConfig,
   tableSettingsConfig,
-  paginationConfig
+  paginationConfig,
 } from './simple-table.config';
 import { DATA } from './simple-table.model';
 
@@ -24,7 +21,7 @@ import { DATA } from './simple-table.model';
   styleUrls: ['./simple-table.component.scss'],
 })
 export class SimpleTableComponent implements OnInit {
-  columns: TableField<any>[] = tableColumnsConfig;
+  columns!: TableField<any>[];
 
   direction: 'ltr' | 'rtl' = 'ltr';
 
@@ -40,42 +37,42 @@ export class SimpleTableComponent implements OnInit {
 
   showNoData: boolean = true;
 
-  dataSource:BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  dataSource: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([])
 
-  pagination:TablePagination = {};
+  pagination: TablePagination = {};
 
-  stickyHeader:boolean = false;
+  stickyHeader: boolean = false;
 
-  printConfig:PrintConfig = {};
+  printConfig: PrintConfig = {};
 
-  showProgress:boolean = true;
+  showProgress: boolean = true;
 
   constructor() {}
 
   ngOnInit(): void {
-    // this.setting.columnSetting = this.columns = tableColumnsConfig
-    // this.initTable(
-    //   tableColumnsConfig,
-    //   tableSettingsConfig,
-    //   paginationConfig
-    //   );
+    this.initTable(tableColumnsConfig, tableSettingsConfig, paginationConfig);
     this.setData();
   }
 
   initTable(
     columnsConfig: TableField<any>[],
     settingConfig: TableSetting,
-    paginationConfig: TablePagination,
-    ): void {
+    paginationConfig: TablePagination
+  ): void {
     this.columns = columnsConfig;
     this.setting = settingConfig;
-    this.pagination = paginationConfig; 
+    this.pagination = paginationConfig;
   }
 
   setData() {
-    let data = DATA
+    let data = DATA.map((items) => {
+      return {
+        ...items,
+        option: {
+          expandCallback: null,
+        },
+      };
+    });
     this.dataSource.next(data);
-    console.log(data);
-    
   }
 }

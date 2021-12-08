@@ -1,0 +1,18 @@
+<mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(value)]="selectionMode">
+    <mat-button-toggle value="single">Single</mat-button-toggle>
+    <mat-button-toggle value="multi">Multi</mat-button-toggle>
+    <mat-button-toggle value="none">None</mat-button-toggle>
+</mat-button-toggle-group>
+
+<dynamic-mat-table
+    [columns]="columns"
+    [setting]="setting"
+    [showReload]="true"
+    direction="ltr"
+    [rowSelectionMode]="selectionMode"
+    [dataSource]="datasource"
+    [style.height.vh]="70"
+>
+    
+</dynamic-mat-table>
+

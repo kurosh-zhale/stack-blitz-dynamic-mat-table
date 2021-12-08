@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, TemplateRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,7 +16,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { SimpleTableComponent } from './simple-table/simple-table.component';
+import { SelectableTableComponent } from './selectable-table/selectable-table.component';
 
 const MaterialModules = [
   MatIconModule,
@@ -27,13 +30,16 @@ const MaterialModules = [
   MatCardModule,
   MatCheckboxModule,
   MatButtonModule,
-  MatTabsModule
+  MatTabsModule,
+  MatToolbarModule,
+  MatButtonToggleModule,
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    SimpleTableComponent
+    SimpleTableComponent,
+    SelectableTableComponent
   ],
   imports: [
     BrowserModule,
