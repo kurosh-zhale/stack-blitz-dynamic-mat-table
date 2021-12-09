@@ -20,6 +20,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { SimpleTableComponent } from './simple-table/simple-table.component';
 import { SelectableTableComponent } from './selectable-table/selectable-table.component';
+import { ExpandableTableComponent } from './expandable-table/expandable-table.component';
+import { DynamicCellComponent } from './expandable-table/dynamic-cell/dynamic-cell.component';
+import { ExpandedTableComponent } from './expandable-table/expanded-table/expanded-table.component';
 
 const MaterialModules = [
   MatIconModule,
@@ -39,7 +42,10 @@ const MaterialModules = [
   declarations: [
     AppComponent,
     SimpleTableComponent,
-    SelectableTableComponent
+    SelectableTableComponent,
+    ExpandableTableComponent,
+    DynamicCellComponent,
+    ExpandedTableComponent
   ],
   imports: [
     BrowserModule,
