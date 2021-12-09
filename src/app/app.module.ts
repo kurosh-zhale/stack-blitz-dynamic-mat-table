@@ -23,6 +23,7 @@ import { SelectableTableComponent } from './selectable-table/selectable-table.co
 import { ExpandableTableComponent } from './expandable-table/expandable-table.component';
 import { DynamicCellComponent } from './expandable-table/dynamic-cell/dynamic-cell.component';
 import { ExpandedTableComponent } from './expandable-table/expanded-table/expanded-table.component';
+import { TableWithFooterComponent } from './table-with-footer/table-with-footer.component';
 
 const MaterialModules = [
   MatIconModule,
@@ -45,7 +46,8 @@ const MaterialModules = [
     SelectableTableComponent,
     ExpandableTableComponent,
     DynamicCellComponent,
-    ExpandedTableComponent
+    ExpandedTableComponent,
+    TableWithFooterComponent
   ],
   imports: [
     BrowserModule,
