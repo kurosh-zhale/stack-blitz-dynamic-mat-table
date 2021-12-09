@@ -37,7 +37,7 @@ export class SimpleTableComponent implements OnInit {
 
   showNoData: boolean = true;
 
-  dataSource: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([])
+  dataSource: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
   pagination: TablePagination = {};
 
@@ -47,11 +47,15 @@ export class SimpleTableComponent implements OnInit {
 
   showProgress: boolean = true;
 
+  dataPlayName: 'clear data' | 'fetch data' = 'clear data';
+
+  noDataBtn:boolean = false;
+
   constructor() {}
 
   ngOnInit(): void {
     this.initTable(tableColumnsConfig, tableSettingsConfig, paginationConfig);
-    this.setData();
+    this.dataSource.next(DATA);
   }
 
   initTable(
@@ -64,15 +68,19 @@ export class SimpleTableComponent implements OnInit {
     this.pagination = paginationConfig;
   }
 
-  setData() {
-    let data = DATA.map((items) => {
-      return {
-        ...items,
-        option: {
-          expandCallback: null,
-        },
-      };
-    });
-    this.dataSource.next(data);
+  dataPlay(): void {
+    if (this.dataSource.value !== DATA) {
+      this.dataSource.next(DATA);
+      this.dataPlayName = 'clear data';
+    } else if (this.dataSource.value === DATA) {
+      this.dataSource.next([]);
+      this.dataPlayName = 'fetch data';
+    }
+
+    this.noDataBtn = !this.noDataBtn;
+  }
+
+  changeHeaderMode(){
+    this.stickyHeader = !this.stickyHeader;
   }
 }

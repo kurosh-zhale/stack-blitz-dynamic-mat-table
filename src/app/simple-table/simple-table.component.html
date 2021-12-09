@@ -16,3 +16,31 @@
   [showProgress]="showProgress"
 >
 </dynamic-mat-table>
+
+<div class="container">
+  <button
+    mat-raised-button
+    class="table-btn"
+    color="primary"
+    (click)="dataPlay()"
+  >
+    {{ dataPlayName }}
+  </button>
+  <button
+    *ngIf="noDataBtn"
+    mat-raised-button
+    class="table-btn"
+    color="primary"
+    (click)="showNoData = !showNoData"
+  >
+    NO DATA: {{showNoData}}
+  </button>
+  <button
+    mat-raised-button
+    class="table-btn"
+    color="primary"
+    (click)="changeHeaderMode()"
+  >
+    Sticky Header: {{ stickyHeader }}
+  </button>
+</div>
